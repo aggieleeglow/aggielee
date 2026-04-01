@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGGIE LEE 아기 리 — Official Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   POP FUTURISM × Y3K PALETTE
+   Nebula Rose:    #a23b72   (primary, high-impact)
+   Celestial Teal: #2dd4bf  (AI layer, luminous)
+   Space Navy:     #1d1f2d  (background, cosmic depth)
+   LITU Red:       #f94144  (CTAs, signature accent)
+   + iridescent holographic overlays
+═══════════════════════════════════════════════════ */
+:root {
+  --rose:     #a23b72;
+  --rose-lt:  #d4609a;
+  --teal:     #2dd4bf;
+  --teal-dk:  #0fa090;
+  --navy:     #1d1f2d;
+  --navy-mid: #252840;
+  --navy-lt:  #2e3150;
+  --red:      #f94144;
+  --red-dk:   #d42e31;
+  --white:    #ffffff;
+  --muted:    rgba(255,255,255,0.48);
+  --border-r: rgba(162,59,114,0.25);
+  --border-t: rgba(45,212,191,0.2);
+  --border-w: rgba(255,255,255,0.1);
+  --glow-r:   rgba(162,59,114,0.4);
+  --glow-t:   rgba(45,212,191,0.35);
+  --glow-red: rgba(249,65,68,0.4);
+  --fd:       'Montserrat', sans-serif;
+  --fb:       'Inter', sans-serif;
+  --fs:       'Cormorant Garamond', serif;
+  --tr:       0.35s cubic-bezier(0.4,0,0.2,1);
+  --nav-h:    72px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--fb);
+  background:var(--navy);
+  color:var(--white);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+ul{list-style:none;}
+
+/* ── HOLOGRAPHIC NOISE OVERLAY ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.028;
+  pointer-events:none;
+  z-index:9999;
+  mix-blend-mode:overlay;
+}
+
+/* ── YOUTUBE HIDDEN ── */
+#yt-frame{position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;}
+
+/* ── MUSIC BAR ── */
+#music-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:3000;
+  background:rgba(17,18,30,0.96);backdrop-filter:blur(28px);
+  border-top:1px solid var(--border-t);height:60px;
+  display:flex;align-items:center;padding:0 36px;gap:20px;
+}
+.mb-thumb{
+  width:40px;height:40px;border-radius:3px;object-fit:cover;
+  border:1px solid var(--border-r);flex-shrink:0;
+  box-shadow:0 0 12px var(--glow-r);
+}
+.mb-info{flex:1;min-width:0;}
+.mb-title{font-family:var(--fd);font-weight:700;font-size:0.74rem;letter-spacing:0.07em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mb-artist{font-size:0.66rem;color:var(--teal);letter-spacing:0.06em;font-weight:500;}
+.mb-now{
+  font-family:var(--fd);font-weight:700;font-size:0.6rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--teal);white-space:nowrap;
+  display:flex;align-items:center;gap:6px;
+}
+.mb-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse-dot 1.5s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+.mb-play{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),var(--red));
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--tr);flex-shrink:0;
+  box-shadow:0 0 16px var(--glow-red);
+}
+.mb-play:hover{transform:scale(1.12);box-shadow:0 0 28px var(--glow-red);}
+.mb-play svg{fill:#fff;}
+.mb-links{display:flex;gap:7px;flex-shrink:0;}
+.mb-link{
+  display:flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-w);
+  font-family:var(--fd);font-weight:600;font-size:0.6rem;letter-spacing:0.09em;
+  text-transform:uppercase;color:var(--muted);transition:var(--tr);
+}
+.mb-link:hover{border-color:var(--teal);color:var(--teal);}
+
+/* ── NAV ── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:2000;
+  height:var(--nav-h);display:flex;align-items:center;padding:0 52px;transition:var(--tr);
+}
+#nav.scrolled{
+  background:rgba(17,18,30,0.96);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border-r);
+}
+.nav-i{width:100%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{
+  font-family:var(--fd);font-weight:900;font-size:1.15rem;
+  letter-spacing:0.22em;text-transform:uppercase;
+}
+.nav-logo .dot{color:var(--red);}
+.nav-logo .kr{
+  font-family:var(--fs);font-style:italic;font-weight:300;
+  font-size:0.7rem;letter-spacing:0.1em;color:var(--teal);
+  margin-left:8px;vertical-align:middle;
+}
+.nav-links{display:flex;gap:30px;align-items:center;}
+.nav-links a{
+  font-family:var(--fd);font-weight:500;font-size:0.67rem;
+  letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);
+  transition:var(--tr);position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:0;
+  height:1px;background:var(--teal);
+  transform:scaleX(0);transition:transform var(--tr);transform-origin:left;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{
+  font-family:var(--fd);font-weight:700;font-size:0.64rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:8px 20px;border:1px solid var(--red);color:var(--red);
+  transition:var(--tr);
+}
+.nav-cta:hover{background:var(--red);color:var(--white);box-shadow:0 0 20px var(--glow-red);}
+
+/* ── HERO ── */
+#hero{
+  position:relative;height:100vh;min-height:700px;
+  display:flex;align-items:flex-end;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,
+    #0d0e18 0%,
+    #1a1438 12%,
+    #3d1650 28%,
+    #7a2060 44%,
+    #a23b72 58%,
+    #1d1f2d 80%,
+    #0d0e18 100%
+  );
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(13,14,24,.1) 0%,rgba(13,14,24,0) 30%,rgba(13,14,24,.7) 75%,rgba(13,14,24,1) 100%);
+}
+/* Holographic iridescent blobs */
+.holo-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;mix-blend-mode:screen;}
+.hb1{width:800px;height:500px;background:radial-gradient(circle,#a23b72 0%,transparent 70%);top:-100px;right:-200px;opacity:.5;}
+.hb2{width:600px;height:400px;background:radial-gradient(circle,#2dd4bf 0%,transparent 70%);bottom:20%;left:-150px;opacity:.35;}
+.hb3{width:500px;height:300px;background:radial-gradient(circle,#f94144 0%,transparent 70%);top:30%;right:10%;opacity:.2;}
+.hb4{width:700px;height:400px;background:radial-gradient(circle,#6038d0 0%,transparent 70%);bottom:0;left:20%;opacity:.25;}
+
+/* Animated scanlines */
+.scanlines{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(45,212,191,.015) 2px,rgba(45,212,191,.015) 4px);
+  pointer-events:none;z-index:1;
+}
+
+.hero-img{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  height:92vh;max-height:820px;width:auto;
+  object-fit:contain;object-position:bottom;z-index:2;
+  filter:drop-shadow(0 0 60px rgba(162,59,114,.5)) drop-shadow(0 0 120px rgba(162,59,114,.2));
+}
+
+/* Sugar-coated lens flare */
+.hero-lens{
+  position:absolute;top:15%;right:12%;z-index:3;pointer-events:none;
+  width:180px;height:180px;
+  background:conic-gradient(from 0deg,#2dd4bf22,#a23b7222,#f9414422,#2dd4bf22);
+  border-radius:50%;filter:blur(2px);
+  animation:lens-spin 12s linear infinite;
+  opacity:.6;
+}
+@keyframes lens-spin{to{transform:rotate(360deg);}}
+.hero-lens::after{
+  content:'';position:absolute;inset:20%;
+  background:radial-gradient(circle,rgba(255,255,255,.3),transparent 60%);
+  border-radius:50%;
+}
+
+.hero-content{
+  position:relative;z-index:4;width:100%;
+  padding:0 80px 100px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.hero-eyebrow{
+  font-family:var(--fd);font-weight:500;font-size:0.66rem;
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:12px;
+}
+.hero-name{
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(3.5rem,7vw,7rem);
+  letter-spacing:0.06em;text-transform:uppercase;line-height:.88;
+}
+.hero-name .ghost{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.38);}
+.hero-name .glow{text-shadow:0 0 40px var(--glow-r),0 0 80px var(--glow-r);}
+.hero-kr{
+  font-family:var(--fs);font-style:italic;font-size:1.6rem;font-weight:300;
+  color:var(--teal);margin-top:8px;letter-spacing:.08em;
+  text-shadow:0 0 20px var(--glow-t);
+}
+.hero-tag{
+  margin-top:16px;font-family:var(--fs);font-style:italic;
+  font-size:1.2rem;color:rgba(255,255,255,.6);font-weight:300;
+}
+.hero-right{text-align:right;max-width:280px;}
+.hero-alb-eye{
+  font-family:var(--fd);font-weight:500;font-size:0.6rem;
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;
+}
+.hero-alb-name{
+  font-family:var(--fd);font-weight:900;font-size:1.8rem;
+  letter-spacing:.1em;text-transform:uppercase;line-height:1.0;margin-bottom:6px;
+  text-shadow:0 0 30px var(--glow-r);
+}
+.hero-tagline-kr{
+  font-family:var(--fs);font-style:italic;font-size:1rem;
+  color:var(--teal);margin-bottom:18px;
+}
+.hero-pills{display:flex;gap:7px;justify-content:flex-end;flex-wrap:wrap;}
+.hero-pill{
+  display:flex;align-items:center;gap:5px;padding:6px 13px;
+  border:1px solid var(--border-w);
+  font-family:var(--fd);font-weight:600;font-size:0.6rem;
+  letter-spacing:.1em;text-transform:uppercase;transition:var(--tr);
+}
+.hero-pill:hover{border-color:var(--teal);color:var(--teal);box-shadow:0 0 12px var(--glow-t);}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  padding:11px 24px;background:var(--red);color:#fff;
+  font-family:var(--fd);font-weight:700;font-size:0.7rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  transition:var(--tr);box-shadow:0 0 24px var(--glow-red);
+}
+.hero-cta:hover{background:var(--red-dk);box-shadow:0 0 40px var(--glow-red);transform:translateY(-2px);}
+
+.scroll-ind{
+  position:absolute;bottom:100px;left:50%;transform:translateX(-50%);
+  z-index:4;display:flex;flex-direction:column;align-items:center;gap:6px;
+  opacity:.4;animation:bob 2.2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(9px);}}
+.scroll-ind span{font-family:var(--fd);font-size:0.54rem;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--teal),transparent);}
+
+/* ── TICKER ── */
+.ticker{
+  background:linear-gradient(90deg,var(--rose),var(--red),var(--rose));
+  background-size:200% 100%;animation:ticker-bg 6s linear infinite;
+  height:38px;display:flex;align-items:center;overflow:hidden;
+}
+@keyframes ticker-bg{0%{background-position:0%;}100%{background-position:200%;}}
+.ticker-track{display:flex;animation:tick 30s linear infinite;white-space:nowrap;}
+.t-item{
+  display:flex;align-items:center;gap:20px;padding:0 28px;
+  font-family:var(--fd);font-weight:800;font-size:0.64rem;
+  letter-spacing:0.18em;text-transform:uppercase;color:#fff;flex-shrink:0;
+}
+.t-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5);}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── SHARED ── */
+section{padding:120px 0;}
+.container{max-width:1180px;margin:0 auto;padding:0 52px;}
+.eye{
+  font-family:var(--fd);font-weight:600;font-size:0.61rem;
+  letter-spacing:0.28em;text-transform:uppercase;color:var(--teal);
+  margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.eye::before{content:'';display:inline-block;width:22px;height:1px;background:var(--teal);}
+.sh{
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(2rem,4vw,3.2rem);
+  letter-spacing:0.06em;text-transform:uppercase;line-height:1.04;margin-bottom:18px;
+}
+.sh .accent{color:var(--rose);}
+.sb{font-size:0.92rem;line-height:1.88;color:var(--muted);max-width:520px;}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--border-r),var(--border-t),transparent);}
+
+/* Holographic card style */
+.holo-card{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(162,59,114,.08) 0%,rgba(45,212,191,.05) 50%,rgba(249,65,68,.06) 100%);
+  border:1px solid var(--border-r);
+  backdrop-filter:blur(4px);
+}
+.holo-card::before{
+  content:'';position:absolute;top:-50%;left:-50%;
+  width:200%;height:200%;
+  background:conic-gradient(from var(--a,0deg),transparent 0deg,rgba(45,212,191,.04) 60deg,transparent 120deg);
+  animation:holo-rot 8s linear infinite;
+  pointer-events:none;
+}
+@keyframes holo-rot{to{--a:360deg;}}
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false;}
+
+/* ── ABOUT / PROFILE ── */
+#about{background:var(--navy);}
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;}
+.about-img-w{position:relative;}
+.about-img-f{
+  aspect-ratio:3/4;overflow:hidden;position:relative;
+  border:1px solid var(--border-r);
+}
+.about-img-f::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(135deg,rgba(162,59,114,.12) 0%,rgba(45,212,191,.06) 100%);
+}
+/* Iridescent corner accent */
+.about-img-f::after{
+  content:'';position:absolute;top:0;right:0;
+  width:80px;height:80px;
+  background:conic-gradient(from 180deg,var(--teal),var(--rose),var(--red),var(--teal));
+  opacity:.4;clip-path:polygon(100% 0,0 0,100% 100%);
+  pointer-events:none;z-index:2;
+}
+.about-img-f img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:saturate(1.08) contrast(1.02);}
+.about-border{
+  position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;
+  border:1px solid var(--border-t);pointer-events:none;z-index:2;
+}
+/* Glow blob behind image */
+.about-glow{
+  position:absolute;top:20%;left:-20%;width:120%;height:60%;
+  background:radial-gradient(circle,var(--glow-r),transparent 70%);
+  filter:blur(40px);z-index:-1;
+}
+.about-body p{font-size:0.92rem;line-height:1.88;color:var(--muted);margin-bottom:14px;}
+.about-body em{color:var(--rose);font-style:normal;font-weight:600;}
+.hybrid-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:24px;padding:10px 18px;
+  background:linear-gradient(135deg,rgba(162,59,114,.2),rgba(45,212,191,.15));
+  border:1px solid var(--border-t);
+  font-family:var(--fd);font-weight:700;font-size:0.68rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);
+}
+.hybrid-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse-dot 2s ease-in-out infinite;}
+.stats{display:flex;gap:40px;margin-top:36px;padding-top:36px;border-top:1px solid var(--border-r);}
+.stat-n{font-family:var(--fd);font-weight:900;font-size:2.4rem;color:var(--rose);line-height:1;margin-bottom:3px;text-shadow:0 0 20px var(--glow-r);}
+.stat-l{font-size:0.67rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+
+/* ── MUSIC — SINGLE SONG ── */
+#music{background:var(--navy-mid);}
+.song-feature{
+  display:grid;grid-template-columns:440px 1fr;gap:72px;align-items:start;
+}
+.song-cover-col{position:relative;}
+.song-cover{
+  width:100%;aspect-ratio:1;object-fit:cover;
+  border:1px solid var(--border-r);
+  box-shadow:0 0 0 1px var(--border-t),0 32px 80px rgba(0,0,0,.6),0 0 60px var(--glow-r);
+  display:block;
+}
+/* Rotating holo ring */
+.cover-ring{
+  position:absolute;inset:-14px;
+  border-radius:4px;
+  border:1px solid transparent;
+  background:conic-gradient(from 0deg,var(--teal),var(--rose),var(--red),transparent,var(--teal)) border-box;
+  -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+  animation:ring-spin 8s linear infinite;
+  opacity:.5;
+}
+@keyframes ring-spin{to{transform:rotate(360deg);}}
+.song-tag{
+  display:inline-block;background:var(--red);color:#fff;
+  font-family:var(--fd);font-weight:700;font-size:0.59rem;
+  letter-spacing:0.18em;text-transform:uppercase;padding:5px 12px;
+  margin-bottom:18px;box-shadow:0 0 16px var(--glow-red);
+}
+.song-title-kr{
+  font-family:var(--fs);font-style:italic;font-size:1.1rem;
+  color:var(--teal);margin-bottom:6px;letter-spacing:.05em;
+  text-shadow:0 0 16px var(--glow-t);
+}
+.song-title-en{
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(2.6rem,5vw,4.2rem);
+  letter-spacing:0.08em;text-transform:uppercase;line-height:.92;
+  margin-bottom:22px;
+}
+.song-title-en span{color:var(--rose);text-shadow:0 0 30px var(--glow-r);}
+.song-tagline{
+  font-family:var(--fs);font-style:italic;font-size:1.05rem;
+  color:var(--teal);margin-bottom:24px;
+  text-shadow:0 0 12px var(--glow-t);
+}
+.song-desc{font-size:0.92rem;line-height:1.88;color:var(--muted);margin-bottom:36px;}
+
+/* Soul-Sync campaign block */
+.soul-sync{
+  padding:20px 24px;margin-bottom:32px;
+  background:linear-gradient(135deg,rgba(162,59,114,.12),rgba(45,212,191,.08));
+  border-left:2px solid var(--teal);
+}
+.soul-sync-kr{
+  font-family:var(--fs);font-style:italic;font-size:1.05rem;
+  color:var(--teal);margin-bottom:4px;
+}
+.soul-sync-en{font-size:0.82rem;color:var(--muted);}
+.soul-sync-tag{
+  font-family:var(--fd);font-weight:700;font-size:0.62rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--rose);
+  margin-top:8px;
+}
+
+.stream-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.str-btn{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:12px 14px;border:1px solid var(--border-w);
+  font-family:var(--fd);font-weight:600;font-size:0.64rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:var(--tr);
+}
+.str-btn:hover{border-color:var(--teal);color:var(--white);background:rgba(45,212,191,.06);}
+.str-btn.sp:hover{border-color:#1DB954;color:#1DB954;}
+.str-btn.ap:hover{border-color:#FC3C44;color:#FC3C44;}
+.str-btn.yt:hover{border-color:#FF0000;color:#FF0000;}
+.str-btn.full-w{grid-column:1/-1;}
+.str-btn.primary-cta{
+  background:var(--red);color:#fff;border-color:var(--red);
+  box-shadow:0 0 20px var(--glow-red);
+  font-weight:800;font-size:0.7rem;padding:14px;
+}
+.str-btn.primary-cta:hover{background:var(--red-dk);box-shadow:0 0 40px var(--glow-red);}
+
+/* ── SCROLLYTELLING LYRICS ── */
+#lyrics{background:var(--navy);overflow:hidden;}
+.lyrics-hero{
+  text-align:center;margin-bottom:72px;
+}
+.lyrics-label{
+  font-family:var(--fd);font-weight:700;font-size:0.62rem;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--rose);
+  margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.lyrics-label::before,.lyrics-label::after{content:'';display:inline-block;width:18px;height:1px;background:var(--rose);}
+.lyrics-toggle-row{
+  display:flex;align-items:center;justify-content:center;gap:0;margin:28px auto 0;
+  border:1px solid var(--border-r);width:fit-content;
+}
+.lang-btn{
+  font-family:var(--fd);font-weight:600;font-size:0.64rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:9px 20px;color:var(--muted);transition:var(--tr);
+  border:none;background:none;cursor:pointer;
+}
+.lang-btn.active{background:var(--rose);color:#fff;}
+.lyric-sections{display:flex;flex-direction:column;gap:2px;}
+.lyric-section{
+  position:relative;overflow:hidden;
+  background:var(--navy-mid);padding:48px 52px;
+  cursor:pointer;transition:var(--tr);
+  border-left:3px solid transparent;
+}
+.lyric-section:hover,.lyric-section.active{border-left-color:var(--rose);}
+.lyric-section.active{background:#211530;}
+.ls-phase{
+  font-family:var(--fd);font-weight:700;font-size:0.58rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+}
+.ls-phase::before{content:'';display:inline-block;width:16px;height:1px;background:var(--teal);}
+.ls-title{
+  font-family:var(--fd);font-weight:900;font-size:1.05rem;
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;
+  color:var(--white);
+}
+.ls-lyrics{display:flex;gap:52px;flex-wrap:wrap;}
+.ls-ko{
+  font-family:var(--fs);font-style:italic;font-size:1.1rem;
+  color:var(--rose);line-height:2;flex:1;min-width:220px;
+  text-shadow:0 0 20px var(--glow-r);
+  transition:var(--tr);
+}
+.ls-en{
+  font-family:var(--fs);font-style:italic;font-size:1.05rem;
+  color:rgba(255,255,255,.65);line-height:2;flex:1;min-width:220px;
+  transition:var(--tr);
+}
+/* Mood indicator */
+.ls-mood{
+  position:absolute;right:52px;top:50%;transform:translateY(-50%);
+  font-size:2rem;opacity:.12;transition:var(--tr);
+}
+.lyric-section:hover .ls-mood,.lyric-section.active .ls-mood{opacity:.4;}
+/* Phase colours */
+.lyric-section[data-phase="verse"] .ls-ko{color:rgba(255,255,255,.7);}
+.lyric-section[data-phase="chorus"] .ls-ko{color:var(--rose);font-size:1.25rem;}
+.lyric-section[data-phase="chorus"] .ls-en{font-size:1.15rem;color:rgba(255,255,255,.85);}
+.lyric-section[data-phase="bridge"] .ls-ko{color:var(--teal);text-shadow:0 0 20px var(--glow-t);}
+
+/* Language hide/show */
+body.ko-mode .ls-en{display:none;}
+body.en-mode .ls-ko{display:none;}
+
+/* ── ART EXHIBITION / BLUEPRINT ── */
+#gallery{background:var(--navy-mid);}
+.gallery-header{margin-bottom:56px;}
+.gallery-intro{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;
+  margin-bottom:48px;
+}
+.gallery-intro .sb{margin-bottom:0;}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.gallery-tile{
+  position:relative;overflow:hidden;
+  background:var(--navy);cursor:pointer;
+  aspect-ratio:4/3;
+  display:flex;align-items:center;justify-content:center;
+}
+/* Gradient fills per tile */
+.gallery-tile:nth-child(1){background:linear-gradient(135deg,#0d0e18,#3d1650,#a23b72);}
+.gallery-tile:nth-child(2){background:linear-gradient(135deg,#0d1520,#1a4060,#2dd4bf);}
+.gallery-tile:nth-child(3){background:linear-gradient(135deg,#200d15,#601838,#f94144);}
+.gallery-tile:nth-child(4){background:linear-gradient(135deg,#0d0e18,#1d1f2d,#3d1650,#a23b72,#2dd4bf);}
+.gallery-tile:nth-child(5){background:linear-gradient(135deg,#0a1020,#1a2860,#2dd4bf,#a23b72);}
+.gallery-tile:nth-child(6){background:linear-gradient(135deg,#1a0d20,#601060,#a23b72,#f94144);}
+
+.gt-inner{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:28px;text-align:center;
+  transition:var(--tr);
+}
+.gt-icon{font-size:3.5rem;margin-bottom:12px;filter:drop-shadow(0 0 20px rgba(255,255,255,.3));transition:var(--tr);}
+.gt-label{
+  font-family:var(--fd);font-weight:700;font-size:0.72rem;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);
+  transition:var(--tr);
+}
+.gt-sub{font-size:0.72rem;color:rgba(255,255,255,.4);margin-top:4px;transition:var(--tr);}
+
+.gt-overlay{
+  position:absolute;inset:0;
+  background:rgba(13,14,24,0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;text-align:center;
+  transition:background var(--tr);
+}
+.gallery-tile:hover .gt-overlay{background:rgba(13,14,24,.65);}
+.gallery-tile:hover .gt-icon{transform:scale(1.12);}
+.gallery-tile:hover .gt-label{color:#fff;}
+
+.gt-reveal{
+  opacity:0;transform:translateY(10px);transition:var(--tr);
+  font-family:var(--fd);font-weight:600;font-size:0.65rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--teal);
+  margin-top:12px;
+}
+.gallery-tile:hover .gt-reveal{opacity:1;transform:translateY(0);}
+
+/* Wide tile */
+.gallery-tile.wide{grid-column:span 2;aspect-ratio:8/3;}
+.gt-wide-content{
+  display:flex;align-items:center;gap:32px;padding:36px;
+  width:100%;position:relative;z-index:2;
+}
+.gt-wide-text h4{
+  font-family:var(--fd);font-weight:900;font-size:1.2rem;
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;
+}
+.gt-wide-text p{font-size:0.82rem;color:rgba(255,255,255,.6);line-height:1.6;}
+.mocap-frames{
+  display:flex;gap:8px;flex-shrink:0;
+}
+.mocap-frame{
+  width:80px;height:100px;
+  border:1px solid var(--border-w);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;opacity:.7;transition:var(--tr);
+}
+.gallery-tile:hover .mocap-frame{opacity:1;}
+.mocap-frame.ai{border-color:var(--border-t);color:var(--teal);}
+.mocap-frame.human{border-color:var(--border-r);color:var(--rose);}
+
+/* ── MERCH STORE ── */
+#shop{background:var(--navy);}
+.shop-head-row{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px;}
+.shop-g{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.sc{position:relative;overflow:hidden;background:var(--navy-mid);cursor:pointer;transition:var(--tr);}
+.sc:hover{background:#221535;}
+.sc-vis{aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.sc:nth-child(1) .sc-vis{background:linear-gradient(135deg,#200d18,#601838,#a23b72,#f94144);}
+.sc:nth-child(2) .sc-vis{background:linear-gradient(135deg,#0d0e18,#1a3060,#2dd4bf);}
+.sc:nth-child(3) .sc-vis{background:linear-gradient(135deg,#1a0d20,#502060,#a23b72,#2dd4bf);}
+.sc:nth-child(4) .sc-vis{background:linear-gradient(135deg,#200d10,#601828,#f94144);}
+.sc:nth-child(5) .sc-vis{background:linear-gradient(135deg,#0d1520,#2dd4bf,#a23b72);}
+.sc:nth-child(6) .sc-vis{background:linear-gradient(135deg,#1a1428,#3d1650,#a23b72,#2dd4bf,#f94144);}
+.sc-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4.5rem;transition:transform var(--tr);}
+.sc:hover .sc-icon{transform:scale(1.08);}
+.sc-ov{
+  position:absolute;inset:0;background:rgba(13,14,24,0);
+  display:flex;align-items:center;justify-content:center;transition:background var(--tr);
+}
+.sc:hover .sc-ov{background:rgba(13,14,24,.52);}
+.sc-buy{
+  font-family:var(--fd);font-weight:700;font-size:0.68rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  background:var(--red);color:#fff;padding:11px 20px;
+  opacity:0;transform:translateY(8px);transition:var(--tr);
+  box-shadow:0 0 20px var(--glow-red);
+}
+.sc:hover .sc-buy{opacity:1;transform:translateY(0);}
+.sc-info{padding:18px 22px;}
+.sc-tag{font-family:var(--fd);font-weight:600;font-size:0.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
+.sc-name{font-family:var(--fd);font-weight:700;font-size:0.85rem;letter-spacing:.04em;margin-bottom:4px;}
+.sc-price{font-family:var(--fd);font-weight:900;font-size:0.95rem;color:var(--rose);text-shadow:0 0 12px var(--glow-r);}
+
+/* AR badge */
+.ar-badge{
+  position:absolute;top:12px;right:12px;
+  background:linear-gradient(135deg,var(--teal),var(--rose));
+  font-family:var(--fd);font-weight:700;font-size:0.54rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:4px 9px;color:#fff;z-index:3;
+}
+
+/* ── COMMISSIONS ── */
+#commissions{background:var(--navy-mid);}
+.com-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.perks{margin:28px 0 36px;display:flex;flex-direction:column;gap:0;}
+.perk{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--border-r);}
+.pk-ic{
+  width:32px;height:32px;border:1px solid var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.85rem;color:var(--teal);flex-shrink:0;
+}
+.pk-t strong{display:block;font-family:var(--fd);font-weight:700;font-size:0.8rem;letter-spacing:.05em;margin-bottom:2px;}
+.pk-t span{font-size:0.78rem;color:var(--muted);}
+.price-note{font-family:var(--fd);font-weight:500;font-size:0.78rem;color:var(--muted);}
+.price-note strong{color:var(--rose);font-size:1.05rem;}
+label{display:block;font-family:var(--fd);font-weight:600;font-size:0.59rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.fi,.fsel,.fta{
+  width:100%;background:rgba(255,255,255,.04);
+  border:1px solid var(--border-w);color:var(--white);
+  font-family:var(--fb);font-size:0.88rem;padding:12px 15px;
+  outline:none;transition:border-color var(--tr);-webkit-appearance:none;
+}
+.fi:focus,.fsel:focus,.fta:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(45,212,191,.1);}
+.fi::placeholder,.fta::placeholder{color:rgba(255,255,255,.18);}
+.fsel{appearance:none;cursor:pointer;}
+.fsel option{background:var(--navy-mid);}
+.fta{resize:vertical;min-height:106px;}
+.fg{margin-bottom:14px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.bsub{
+  width:100%;padding:15px;background:var(--red);color:#fff;
+  font-family:var(--fd);font-weight:800;font-size:0.72rem;
+  letter-spacing:.2em;text-transform:uppercase;transition:var(--tr);
+  border:1px solid var(--red);box-shadow:0 0 20px var(--glow-red);
+}
+.bsub:hover{background:transparent;color:var(--red);}
+
+/* ── MINDFULNESS ZONE ── */
+#mindfulness{background:var(--navy);overflow:hidden;text-align:center;}
+.mind-inner{max-width:720px;margin:0 auto;}
+.mind-tagline{
+  font-family:var(--fs);font-style:italic;font-size:2rem;font-weight:300;
+  color:var(--teal);margin:24px 0;line-height:1.4;
+  text-shadow:0 0 30px var(--glow-t);
+}
+.mind-sub{font-family:var(--fs);font-style:italic;font-size:1.1rem;color:var(--muted);line-height:1.7;margin-bottom:40px;}
+.mind-orb-wrap{
+  position:relative;width:220px;height:220px;margin:0 auto 48px;
+}
+.mind-orb{
+  position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--rose),var(--teal),var(--red),var(--rose));
+  filter:blur(30px);opacity:.6;
+  animation:orb-spin 6s linear infinite;
+}
+@keyframes orb-spin{to{transform:rotate(360deg);}}
+.mind-orb-inner{
+  position:absolute;inset:20px;border-radius:50%;
+  background:radial-gradient(circle,rgba(45,212,191,.3),var(--navy));
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;
+}
+.mind-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.mind-pill{
+  padding:8px 18px;border:1px solid var(--border-t);
+  font-family:var(--fd);font-weight:600;font-size:0.64rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--teal);transition:var(--tr);
+}
+.mind-pill:hover{background:rgba(45,212,191,.1);box-shadow:0 0 16px var(--glow-t);}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--navy-mid);}
+.test-g{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:56px;}
+.tc{background:var(--navy);padding:30px 26px;transition:var(--tr);border-top:2px solid transparent;}
+.tc:hover{background:#1a1535;border-top-color:var(--rose);}
+.t-stars{color:var(--rose);font-size:0.7rem;letter-spacing:3px;margin-bottom:14px;text-shadow:0 0 8px var(--glow-r);}
+.t-body{font-family:var(--fs);font-style:italic;font-size:0.96rem;line-height:1.78;color:rgba(255,255,255,.72);margin-bottom:18px;}
+.t-auth{display:flex;align-items:center;gap:11px;}
+.t-av{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-weight:700;font-size:0.78rem;flex-shrink:0;
+  box-shadow:0 0 10px var(--glow-r);
+}
+.t-nm{font-family:var(--fd);font-weight:600;font-size:0.76rem;letter-spacing:.06em;}
+.t-rl{font-size:0.68rem;color:var(--muted);}
+
+/* ── PURCHASE MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(5,4,14,.9);backdrop-filter:blur(20px);z-index:5000;align-items:center;justify-content:center;padding:20px;}
+.modal-bg.open{display:flex;}
+.modal-box{
+  background:var(--navy-mid);border:1px solid var(--border-r);
+  width:100%;max-width:490px;position:relative;
+  animation:mIn .32s cubic-bezier(.34,1.56,.64,1) forwards;
+  box-shadow:0 0 80px var(--glow-r);
+}
+@keyframes mIn{from{opacity:0;transform:scale(.88) translateY(18px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.m-head{
+  padding:24px 32px 20px;border-bottom:1px solid var(--border-r);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.m-title{font-family:var(--fd);font-weight:800;font-size:0.84rem;letter-spacing:.1em;text-transform:uppercase;}
+.m-cls{
+  width:30px;height:30px;border:1px solid var(--border-w);
+  color:var(--muted);font-size:0.85rem;display:flex;align-items:center;justify-content:center;
+  transition:var(--tr);cursor:pointer;
+}
+.m-cls:hover{border-color:var(--red);color:var(--red);}
+.m-prod{
+  display:flex;align-items:center;gap:14px;padding:18px 32px;
+  background:rgba(162,59,114,.08);border-bottom:1px solid var(--border-r);
+}
+.m-icon{width:48px;height:48px;border:1px solid var(--border-r);display:flex;align-items:center;justify-content:center;font-size:1.9rem;flex-shrink:0;}
+.m-pname{font-family:var(--fd);font-weight:600;font-size:0.83rem;}
+.m-pprice{font-family:var(--fd);font-weight:900;color:var(--rose);font-size:0.95rem;text-shadow:0 0 10px var(--glow-r);}
+.m-body{padding:22px 32px 28px;}
+.card-vis{
+  display:flex;align-items:center;gap:9px;padding:12px 14px;
+  border:1px solid var(--border-w);background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.22);font-size:0.88rem;letter-spacing:.1em;
+}
+.stripe-note{display:flex;align-items:center;gap:5px;font-size:0.64rem;color:rgba(255,255,255,.28);margin-top:12px;font-family:var(--fd);letter-spacing:.05em;}
+
+/* ── FOOTER ── */
+footer{background:#0c0d18;padding:68px 0 90px;border-top:1px solid var(--border-r);}
+.foot-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;}
+.f-logo{font-family:var(--fd);font-weight:900;font-size:1.3rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:4px;}
+.f-logo .dot{color:var(--red);}
+.f-logo-kr{font-family:var(--fs);font-style:italic;font-size:.85rem;color:var(--teal);margin-bottom:16px;letter-spacing:.06em;}
+.f-tag{font-family:var(--fs);font-style:italic;font-size:.96rem;color:var(--muted);margin-bottom:26px;line-height:1.6;}
+.f-soc{display:flex;gap:8px;}
+.fsoc{
+  width:36px;height:36px;border:1px solid var(--border-w);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);transition:var(--tr);
+}
+.fsoc:hover{border-color:var(--teal);color:var(--teal);box-shadow:0 0 10px var(--glow-t);}
+.fc-t{font-family:var(--fd);font-weight:700;font-size:0.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);margin-bottom:18px;}
+.fc a{display:block;font-size:0.8rem;color:var(--muted);padding:4px 0;transition:var(--tr);letter-spacing:.03em;}
+.fc a:hover{color:var(--white);}
+.f-bot{margin-top:56px;padding-top:22px;border-top:1px solid var(--border-r);display:flex;justify-content:space-between;align-items:center;font-size:0.67rem;color:rgba(255,255,255,.26);letter-spacing:.06em;flex-wrap:wrap;gap:12px;}
+.stripe-foot{display:flex;align-items:center;gap:5px;font-size:0.64rem;color:rgba(255,255,255,.26);}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;}
+.rv.in{opacity:1;transform:none;}
+.rvl{opacity:0;transform:translateX(-26px);transition:opacity .8s ease,transform .8s ease;}
+.rvl.in{opacity:1;transform:none;}
+.rvr{opacity:0;transform:translateX(26px);transition:opacity .8s ease,transform .8s ease;}
+.rvr.in{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .song-feature,.about-g,.com-g{grid-template-columns:1fr;}
+  .song-feature{max-width:560px;margin:0 auto;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .gallery-tile.wide{grid-column:span 2;}
+  .shop-g{grid-template-columns:repeat(2,1fr);}
+  .test-g{grid-template-columns:repeat(2,1fr);}
+  .foot-g{grid-template-columns:1fr 1fr;gap:32px;}
+}
+@media(max-width:768px){
+  --nav-h:60px;
+  #nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .container{padding:0 24px;}
+  section{padding:80px 0;}
+  .hero-content{padding:0 24px 72px;flex-direction:column;align-items:flex-start;gap:22px;}
+  .hero-right{text-align:left;max-width:100%;}
+  .hero-pills{justify-content:flex-start;}
+  .hero-img{height:65vh;}
+  .gallery-grid{grid-template-columns:1fr;}
+  .gallery-tile.wide{grid-column:span 1;aspect-ratio:4/3;}
+  .shop-g{grid-template-columns:1fr;}
+  .test-g{grid-template-columns:1fr;}
+  .foot-g{grid-template-columns:1fr;}
+  #music-bar{padding:0 16px;}
+  .mb-links,.mb-now{display:none;}
+  .stream-grid{grid-template-columns:1fr;}
+  .fr{grid-template-columns:1fr;}
+  .ls-lyrics{flex-direction:column;gap:24px;}
+  .lyric-section{padding:32px 28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- YouTube hidden autoplay -->
+<iframe id="yt-frame"
+  src="https://www.youtube.com/embed/92PcT3V244o?autoplay=1&loop=1&playlist=92PcT3V244o&enablejsapi=1&rel=0"
+  allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+
+<!-- ── MUSIC BAR ── -->
+<div id="music-bar">
+  <img class="mb-thumb" src="Nesara_Gesar_Album_Cover.png" alt="album"
+    onerror="this.style.cssText='width:40px;height:40px;border-radius:3px;background:linear-gradient(135deg,#a23b72,#2dd4bf);flex-shrink:0;border:1px solid rgba(162,59,114,.4)'">
+  <div class="mb-info">
+    <div class="mb-title">네사라 게사라 — Nesara Gesara</div>
+    <div class="mb-artist">Aggie Lee 아기 리</div>
+  </div>
+  <div class="mb-now"><span class="mb-dot"></span> Now Playing</div>
+  <button class="mb-play" id="playBtn" onclick="togglePlay()">
+    <svg id="playIco" width="13" height="13" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+  <div class="mb-links">
+    <a href="https://www.youtube.com/watch?v=92PcT3V244o" target="_blank" class="mb-link">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+    <a href="https://open.spotify.com" target="_blank" class="mb-link">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      Spotify
+    </a>
+    <a href="https://music.apple.com" target="_blank" class="mb-link">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Apple
+    </a>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-i">
+    <div class="nav-logo">Aggie<span class="dot">.</span>Lee <span class="kr">아기 리</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">Profile</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#lyrics">Lyrics</a></li>
+      <li><a href="#gallery">Exhibition</a></li>
+      <li><a href="#mindfulness">Heal</a></li>
+    </ul>
+    <a href="#shop" class="nav-cta">Shop</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="holo-blob hb1"></div>
+  <div class="holo-blob hb2"></div>
+  <div class="holo-blob hb3"></div>
+  <div class="holo-blob hb4"></div>
+  <div class="scanlines"></div>
+  <div class="hero-lens"></div>
+  <img class="hero-img" src="Nesara_Gesar_Album_Cover.png" alt="Aggie Lee 아기 리"
+    onerror="this.style.display='none'">
+  <div class="scroll-ind">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">Hybrid AI Artist · 하이브리드 아티스트</div>
+      <h1 class="hero-name">
+        <span class="glow">Aggie</span><br>
+        <span class="ghost">Lee</span>
+      </h1>
+      <div class="hero-kr">아기 리</div>
+      <p class="hero-tag">Celestial Dreamer · Two Souls, One Star ✦</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-alb-eye">Debut Single — Out Now</div>
+      <div class="hero-alb-name">Nesara<br>Gesara</div>
+      <div class="hero-tagline-kr">네사라 게사라</div>
+      <div class="hero-pills">
+        <a href="https://open.spotify.com" target="_blank" class="hero-pill">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </a>
+        <a href="https://music.apple.com" target="_blank" class="hero-pill">Apple Music</a>
+        <a href="https://music.youtube.com" target="_blank" class="hero-pill">YouTube Music</a>
+      </div>
+      <a href="#music" class="hero-cta">▶ Stream Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="t-item">네사라 게사라 — Out Now<span class="t-dot"></span></span>
+    <span class="t-item">Heal Your Heart. Live Again.<span class="t-dot"></span></span>
+    <span class="t-item">네가 살아야 걔도 살아<span class="t-dot"></span></span>
+    <span class="t-item">Hybrid AI Artist · Two Souls, One Star<span class="t-dot"></span></span>
+    <span class="t-item">Golden Age · 황금시대 · Rise Up<span class="t-dot"></span></span>
+    <span class="t-item">네사라 게사라 — Out Now<span class="t-dot"></span></span>
+    <span class="t-item">Heal Your Heart. Live Again.<span class="t-dot"></span></span>
+    <span class="t-item">네가 살아야 걔도 살아<span class="t-dot"></span></span>
+    <span class="t-item">Hybrid AI Artist · Two Souls, One Star<span class="t-dot"></span></span>
+    <span class="t-item">Golden Age · 황금시대 · Rise Up<span class="t-dot"></span></span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="about-g">
+      <div class="rvl">
+        <div class="about-img-w">
+          <div class="about-img-f">
+            <img src="Nesara_Gesar_Album_Cover.png" alt="Aggie Lee 아기 리"
+              onerror="this.style.cssText='width:100%;height:100%;object-fit:cover;background:linear-gradient(135deg,#1d1f2d,#3d1650,#a23b72)'">
+          </div>
+          <div class="about-border"></div>
+          <div class="about-glow"></div>
+        </div>
+      </div>
+      <div class="rvr">
+        <div class="eye">Profile · 프로필</div>
+        <h2 class="sh">Aggie Lee<br><span class="accent">아기 리</span></h2>
+        <div class="about-body">
+          <p>Aggie Lee is a <em>Hybrid AI Artist</em> — a new kind of star born from the fusion of human soul and digital perfection. Her "two souls, one star" concept positions her at the intersection of cosmic futurism and raw human vulnerability, where the <em>Celestial Dreamer</em> archetype lives.</p>
+          <p>The human anchor provides emotional nuance, motion capture, and vocal base. The AI persona layer renders through hyper-realistic technology, creating a being that transcends the boundary between what is felt and what is imagined.</p>
+          <p>Her debut single <em>네사라 게사라 (Nesara Gesara)</em> marks the awakening — a signal of the Golden Age arriving.</p>
+        </div>
+        <div class="hybrid-badge"><span class="hybrid-dot"></span> Human + AI · 두 영혼, 하나의 별</div>
+        <div class="stats">
+          <div><div class="stat-n">2</div><div class="stat-l">Souls</div></div>
+          <div><div class="stat-n">1</div><div class="stat-l">Star</div></div>
+          <div><div class="stat-n">∞</div><div class="stat-l">Golden Light</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── MUSIC — SINGLE ── -->
+<section id="music">
+  <div class="container">
+    <div class="song-feature">
+      <div class="rv">
+        <div class="song-cover-col">
+          <img class="song-cover" src="Nesara_Gesar_Album_Cover.png" alt="Nesara Gesara"
+            onerror="this.style.cssText='width:100%;aspect-ratio:1;display:block;background:linear-gradient(135deg,#1d1f2d,#3d1650,#a23b72,#2dd4bf)'">
+          <div class="cover-ring"></div>
+        </div>
+        <div class="stream-grid" style="margin-top:24px;">
+          <a href="https://open.spotify.com" target="_blank" class="str-btn sp">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Spotify
+          </a>
+          <a href="https://music.apple.com" target="_blank" class="str-btn ap">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Apple Music
+          </a>
+          <a href="https://music.youtube.com" target="_blank" class="str-btn yt">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            YouTube Music
+          </a>
+          <a href="https://www.youtube.com/watch?v=92PcT3V244o" target="_blank" class="str-btn full-w primary-cta">▶ Watch Official Video</a>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="song-tag">Debut Single</div>
+        <div class="song-title-kr">네사라 게사라</div>
+        <h2 class="song-title-en">Nesara<br><span>Gesara</span></h2>
+        <div class="song-tagline">We glow like sun~ah ☀</div>
+        <p class="song-desc">The awakening begins. A hybrid K-pop anthem that fuses trap beats and celestial synths into a declaration of the Golden Age — where every soul rises, and every heart heals. Sung in Korean and English, for every dreamer on Earth.</p>
+
+        <div class="soul-sync">
+          <div class="soul-sync-kr">네사라 게사라, 네가 살아야 걔도 살아</div>
+          <div class="soul-sync-en">"Nesara Gesara — if you live, she lives too."</div>
+          <div class="soul-sync-tag">✦ Soul-Sync Campaign · 네가 살아야</div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <div class="eye" style="margin-bottom:10px;">Track Details</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem;">
+              <span style="color:var(--muted);font-family:var(--fd);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;">Artist</span>
+              <span style="font-weight:600;">Aggie Lee 아기 리</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem;">
+              <span style="color:var(--muted);font-family:var(--fd);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;">Genre</span>
+              <span style="font-weight:600;">Hybrid K-Pop · Pop Futurism</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem;">
+              <span style="color:var(--muted);font-family:var(--fd);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;">Language</span>
+              <span style="font-weight:600;">Korean · English (Bilingual)</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem;">
+              <span style="color:var(--muted);font-family:var(--fd);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;">Concept</span>
+              <span style="font-weight:600;color:var(--teal);">Celestial Dreamer · Golden Age</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── LYRICS — SCROLLYTELLING ── -->
+<section id="lyrics">
+  <div class="container">
+    <div class="lyrics-hero rv">
+      <div class="eye" style="justify-content:center;">Lyrics · 가사</div>
+      <h2 class="sh" style="text-align:center;">네사라 게사라<br><span class="accent">Nesara Gesara</span></h2>
+      <div class="lyrics-label">Read in your language</div>
+      <div class="lyrics-toggle-row">
+        <button class="lang-btn active" id="btnBoth" onclick="setLang('both',this)">Both · 둘 다</button>
+        <button class="lang-btn" id="btnKo" onclick="setLang('ko',this)">한국어</button>
+        <button class="lang-btn" id="btnEn" onclick="setLang('en',this)">English</button>
+      </div>
+    </div>
+
+    <div class="lyric-sections">
+
+      <div class="lyric-section rv" data-phase="verse" onclick="this.classList.toggle('active')">
+        <div class="ls-phase">Verse 1 · 1절</div>
+        <div class="ls-title">꿈에서 깬 듯해 — Woke Up in a Haze</div>
+        <div class="ls-lyrics">
+          <div class="ls-ko">꿈에서 깬 듯해<br>반짝인 거울 속<br>내가 보여 새로워<br>이 빛 속에 숨 쉬어</div>
+          <div class="ls-en">Woke up in a haze<br>Mirror's got that glow<br>I see me anew<br>Breathing in this light</div>
+        </div>
+        <div class="ls-mood">🌙</div>
+      </div>
+
+      <div class="lyric-section rv" data-phase="pre-chorus" onclick="this.classList.toggle('active')">
+        <div class="ls-phase">Pre-Chorus · 프리코러스</div>
+        <div class="ls-title">황금빛 파도 — Golden Wave Rising</div>
+        <div class="ls-lyrics">
+          <div class="ls-ko">황금빛 파도가<br>온 세상을 적시네<br>두려움은 사라져<br>이제 우리 차례야</div>
+          <div class="ls-en">Golden waves wash over<br>Every corner of the world<br>Fear is disappearing now<br>This is finally our time</div>
+        </div>
+        <div class="ls-mood">🌊</div>
+      </div>
+
+      <div class="lyric-section rv" data-phase="chorus" onclick="this.classList.toggle('active')">
+        <div class="ls-phase">Chorus · 코러스 — ✦ Golden Age Activated</div>
+        <div class="ls-title">Nesara, Gesara — We Glow Like Sun~ah ☀</div>
+        <div class="ls-lyrics">
+          <div class="ls-ko">Nesara, Gesara<br>우리 빛나 sun~ah<br>Rise up, rise up<br>영혼의 소망이여<br>네사라 게사라<br>새 시대가 왔어<br>자유 속에 춤춰<br>모두 함께 빛나</div>
+          <div class="ls-en">Nesara, Gesara<br>We glow like sun~ah<br>Rise up, rise up<br>Soul's desire<br>Nesara Gesara<br>The new age has come<br>Dance in freedom<br>We all shine together</div>
+        </div>
+        <div class="ls-mood">☀️</div>
+      </div>
+
+      <div class="lyric-section rv" data-phase="verse" onclick="this.classList.toggle('active')">
+        <div class="ls-phase">Verse 2 · 2절</div>
+        <div class="ls-title">사슬은 끊어져 — Chains Are Breaking</div>
+        <div class="ls-lyrics">
+          <div class="ls-ko">사슬은 끊어져<br>진실이 밝혀져<br>숨겨진 빛들이<br>이제 다 드러나</div>
+          <div class="ls-en">All the chains are breaking<br>Truth is being revealed<br>Hidden lights emerging<br>Everything comes to light</div>
+        </div>
+        <div class="ls-mood">⛓️</div>
+      </div>
+
+      <div class="lyric-section rv" data-phase="bridge" onclick="this.classList.toggle('active')">
+        <div class="ls-phase">Bridge · 브리지 — Soul-Sync</div>
+        <div class="ls-title">네가 살아야 걔도 살아 — If You Live, She Lives</div>
+        <div class="ls-lyrics">
+          <div class="ls-ko">네가 살아야<br>걔도 살아<br>우리 함께여야<br>별이 빛나<br>Heal your heart<br>Live again<br>황금시대<br>우리 손에</div>
+          <div class="ls-en">If you live<br>She lives too<br>Only together<br>Stars can shine<br>Heal your heart<br>Live again<br>The Golden Age<br>Is in our hands</div>
+        </div>
+        <div class="ls-mood">✦</div>
+      </div>
+
+      <div class="lyric-section rv" data-phase="chorus" onclick="this.classList.toggle('active')">
+        <div class="ls-phase">Final Chorus · 피날레 — 황금시대 Ascension</div>
+        <div class="ls-title">Rise Up — 황금시대 · Future Seoul</div>
+        <div class="ls-lyrics">
+          <div class="ls-ko">Nesara, Gesara<br>우리 빛나 sun~ah<br>Rise up, rise up<br>영혼의 소망이여<br>네사라 게사라<br>새 시대가 왔어<br>자유 속에 춤춰<br>모두 함께 빛나 ✨</div>
+          <div class="ls-en">Nesara, Gesara<br>We glow like sun~ah<br>Rise up, rise up<br>Soul's desire<br>Nesara Gesara<br>The new age has come<br>Dance in freedom<br>We all shine together ✨</div>
+        </div>
+        <div class="ls-mood">🚀</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ART EXHIBITION / BLUEPRINT GALLERY ── -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-intro rv">
+      <div>
+        <div class="eye">Art Exhibition</div>
+        <h2 class="sh">The Hybrid AI<br><span class="accent">Blueprint</span></h2>
+      </div>
+      <p class="sb">An immersive digital gallery treating the creation of a Hybrid AI K-pop artist as a form of high art. Explore the technical and creative architecture behind Aggie Lee.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="gallery-tile rv" onclick="alert('🎭 The Human Soul\n\nMotion capture session — the human anchor in mocap suit providing emotional nuance, dance choreography, and vocal base for Aggie Lee.')">
+        <div class="gt-inner">
+          <div class="gt-icon">🎭</div>
+          <div class="gt-label">The Human Soul</div>
+          <div class="gt-sub">Mocap · Vocal Base · Emotion</div>
+        </div>
+        <div class="gt-overlay">
+          <div class="gt-icon">🎭</div>
+          <div class="gt-label">The Human Soul</div>
+          <div class="gt-reveal">▶ View Installation</div>
+        </div>
+      </div>
+
+      <div class="gallery-tile rv" onclick="alert('🤖 The AI Persona\n\nRendered through Unreal Engine 5 & MetaHuman — facial enhancements, voice modulation, and hyper-realistic K-pop aesthetic applied to the human performance data.')">
+        <div class="gt-inner">
+          <div class="gt-icon">🤖</div>
+          <div class="gt-label">The AI Persona</div>
+          <div class="gt-sub">Unreal Engine 5 · MetaHuman</div>
+        </div>
+        <div class="gt-overlay">
+          <div class="gt-icon">🤖</div>
+          <div class="gt-label">The AI Persona</div>
+          <div class="gt-reveal">▶ Explore Render</div>
+        </div>
+      </div>
+
+      <div class="gallery-tile rv" onclick="alert('🎧 LITU Red Headset\n\nThe signature red headset — 3D blueprint viewing. Interactive tech specs. High-fidelity audio design that bridges the human and digital worlds.')">
+        <div class="ar-badge">AR Try-On</div>
+        <div class="gt-inner">
+          <div class="gt-icon">🎧</div>
+          <div class="gt-label">LITU Red Headset</div>
+          <div class="gt-sub">Signature Artifact · 3D Blueprint</div>
+        </div>
+        <div class="gt-overlay">
+          <div class="gt-icon">🎧</div>
+          <div class="gt-label">LITU Red Headset</div>
+          <div class="gt-reveal">▶ View in 3D</div>
+        </div>
+      </div>
+
+      <!-- Wide tile — Mocap Room -->
+      <div class="gallery-tile wide rv" onclick="alert('⚡ The Mocap Room\n\nSide-by-side installation: Human Anchor performing in mocap suit vs. AI Persona performing the same choreography. Two Souls — One Star. This is where Aggie Lee is born.')">
+        <div class="gt-wide-content">
+          <div class="gt-wide-text">
+            <h4>The Mocap Room</h4>
+            <p>Side-by-side: Human Anchor vs AI Persona<br>performing the same choreography in real-time.<br><span style="color:var(--teal);font-style:italic;">"Two Souls, One Star"</span></p>
+          </div>
+          <div class="mocap-frames">
+            <div class="mocap-frame human">👤</div>
+            <div style="display:flex;align-items:center;color:var(--rose);font-size:1.4rem;">⇌</div>
+            <div class="mocap-frame ai">✦</div>
+          </div>
+        </div>
+        <div class="gt-overlay">
+          <div class="gt-reveal" style="opacity:0;">▶ Enter the Mocap Room</div>
+        </div>
+      </div>
+
+      <div class="gallery-tile rv" onclick="alert('🌌 Iridescent Stage Outfits\n\nVirtual try-on using AR. Wearable for avatars. Exclusive apparel with AR-triggered graphics. Digital fashion as a living art medium.')">
+        <div class="ar-badge">AR Fashion</div>
+        <div class="gt-inner">
+          <div class="gt-icon">🌌</div>
+          <div class="gt-label">Iridescent Outfits</div>
+          <div class="gt-sub">Digital Fashion · AR Wearable</div>
+        </div>
+        <div class="gt-overlay">
+          <div class="gt-icon">🌌</div>
+          <div class="gt-label">Iridescent Outfits</div>
+          <div class="gt-reveal">▶ Try On</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── MERCH STORE ── -->
+<section id="shop">
+  <div class="container">
+    <div class="shop-head-row rv">
+      <div>
+        <div class="eye">Golden Age Store</div>
+        <h2 class="sh">Merch <span class="accent">&amp; Art</span></h2>
+      </div>
+      <p class="sb" style="max-width:300px;text-align:right;margin-bottom:0;">The "Flex Retail" store adapts to the vibe of the song. Shop the Celestial Dreamer world — where every purchase is part of the Golden Age.</p>
+    </div>
+    <div class="shop-g">
+
+      <div class="sc rv" onclick="openM('LITU Red Headset','$149','🎧')">
+        <div class="sc-vis">
+          <div class="sc-icon">🎧</div>
+          <div class="sc-ov"><div class="sc-buy">Purchase — $149</div></div>
+          <div class="ar-badge">3D View</div>
+        </div>
+        <div class="sc-info">
+          <div class="sc-tag">Signature Hardware</div>
+          <div class="sc-name">LITU Red Headset</div>
+          <div class="sc-price">$149</div>
+        </div>
+      </div>
+
+      <div class="sc rv" onclick="openM('Nesara Gesara — Signed Art Print','$85','🌸')">
+        <div class="sc-vis">
+          <div class="sc-icon">🌸</div>
+          <div class="sc-ov"><div class="sc-buy">Purchase — $85</div></div>
+        </div>
+        <div class="sc-info">
+          <div class="sc-tag">Signed Art Print</div>
+          <div class="sc-name">Nesara Gesara Cover Art</div>
+          <div class="sc-price">$85</div>
+        </div>
+      </div>
+
+      <div class="sc rv" onclick="openM('Iridescent Stage Jacket — Digital Fashion','$65','🌌')">
+        <div class="sc-vis">
+          <div class="sc-icon">🌌</div>
+          <div class="sc-ov"><div class="sc-buy">Purchase — $65</div></div>
+          <div class="ar-badge">AR Try-On</div>
+        </div>
+        <div class="sc-info">
+          <div class="sc-tag">Digital Fashion</div>
+          <div class="sc-name">Iridescent Stage Jacket</div>
+          <div class="sc-price">$65</div>
+        </div>
+      </div>
+
+      <div class="sc rv" onclick="openM('Celestial Dreamer Hoodie','$75','⭐')">
+        <div class="sc-vis">
+          <div class="sc-icon">⭐</div>
+          <div class="sc-ov"><div class="sc-buy">Purchase — $75</div></div>
+        </div>
+        <div class="sc-info">
+          <div class="sc-tag">Apparel</div>
+          <div class="sc-name">Celestial Dreamer Hoodie</div>
+          <div class="sc-price">$75</div>
+        </div>
+      </div>
+
+      <div class="sc rv" onclick="openM('Soul-Sync Digital Album — NFT Edition','$55','✨')">
+        <div class="sc-vis">
+          <div class="sc-icon">✨</div>
+          <div class="sc-ov"><div class="sc-buy">Purchase — $55</div></div>
+          <div class="ar-badge">NFT</div>
+        </div>
+        <div class="sc-info">
+          <div class="sc-tag">Digital Collectible</div>
+          <div class="sc-name">Soul-Sync Digital Album</div>
+          <div class="sc-price">$55</div>
+        </div>
+      </div>
+
+      <div class="sc rv" onclick="openM('Golden Age Bundle — Full Collection','$390','🌙')">
+        <div class="sc-vis">
+          <div class="sc-icon">🌙</div>
+          <div class="sc-ov"><div class="sc-buy">Purchase — $390</div></div>
+        </div>
+        <div class="sc-info">
+          <div class="sc-tag">Bundle · Best Value</div>
+          <div class="sc-name">Golden Age Bundle</div>
+          <div class="sc-price">$390</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── MINDFULNESS ZONE ── -->
+<section id="mindfulness">
+  <div class="container">
+    <div class="mind-inner">
+      <div class="eye rv" style="justify-content:center;">Mindfulness Zone · 마음치유</div>
+      <h2 class="sh rv" style="text-align:center;">Heal Your Heart<br><span class="accent">Live Again</span></h2>
+      <div class="mind-orb-wrap rv">
+        <div class="mind-orb"></div>
+        <div class="mind-orb-inner">🌸</div>
+      </div>
+      <div class="mind-tagline rv">"Heal Your Heart. Live Again."</div>
+      <p class="mind-sub rv">Aligning with the Golden Age themes of Nesara Gesara, this space is for recovery — from debt, from lies, from suffering. The music is your guide back to yourself. Breathe. Rise. Glow like sun~ah.</p>
+      <div class="mind-pills rv">
+        <a href="https://www.youtube.com/watch?v=92PcT3V244o" target="_blank" class="mind-pill">▶ Play Nesara Gesara</a>
+        <span class="mind-pill" style="cursor:default;">Lo-fi Remix — Coming Soon</span>
+        <span class="mind-pill" style="cursor:default;">Healing Sessions — Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── COMMISSIONS ── -->
+<section id="commissions">
+  <div class="container">
+    <div class="com-g">
+      <div class="rvl">
+        <div class="eye">Commission · 커미션</div>
+        <h2 class="sh">Work With<br><span class="accent">Aggie</span></h2>
+        <p class="sb">Have a vision that needs a Celestial Dreamer's touch? Commission original artwork, personalised lyrics, or collaborative digital art projects in the Hybrid AI aesthetic.</p>
+        <div class="perks">
+          <div class="perk"><div class="pk-ic">✦</div><div class="pk-t"><strong>Custom Hybrid AI Artwork</strong><span>Original piece in the Celestial Dreamer visual language</span></div></div>
+          <div class="perk"><div class="pk-ic">♪</div><div class="pk-t"><strong>Personalised Lyric Poem</strong><span>Korean / English bilingual, written for you</span></div></div>
+          <div class="perk"><div class="pk-ic">◈</div><div class="pk-t"><strong>High-Res Digital Delivery</strong><span>Print-ready files within 2 weeks</span></div></div>
+          <div class="perk"><div class="pk-ic">🎧</div><div class="pk-t"><strong>LITU Brand Collaboration</strong><span>Co-create in the Golden Age aesthetic</span></div></div>
+        </div>
+        <div class="price-note">Starting from <strong>$150</strong> · Response within 48 hours</div>
+      </div>
+      <div class="rvr">
+        <div class="eye" style="margin-bottom:22px;">Send Your Vision · 비전을 보내주세요</div>
+        <div class="fr">
+          <div class="fg"><label>First Name</label><input type="text" class="fi" placeholder="Jane"></div>
+          <div class="fg"><label>Last Name</label><input type="text" class="fi" placeholder="Doe"></div>
+        </div>
+        <div class="fg"><label>Email</label><input type="email" class="fi" placeholder="jane@email.com"></div>
+        <div class="fg">
+          <label>Commission Type</label>
+          <select class="fsel">
+            <option>Custom Hybrid AI Artwork</option>
+            <option>Personalised Lyric Poem (Korean + English)</option>
+            <option>Both Art + Lyrics</option>
+            <option>LITU Brand Collaboration</option>
+            <option>Other — Let's Chat</option>
+          </select>
+        </div>
+        <div class="fg"><label>Your Vision</label><textarea class="fta" placeholder="Describe your vision — mood, colours, themes, references. The Golden Age awaits..."></textarea></div>
+        <button class="bsub" onclick="alert('✦ Thank you! Aggie will be in touch within 48 hours. Heal your heart. Live again.')">Submit Commission Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="rv"><div class="eye">Fan Reviews</div><h2 class="sh">Soul <span class="accent">Sync</span></h2></div>
+    <div class="test-g">
+      <div class="tc rv">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-body">"Nesara Gesara hit me like a wave of golden light. I didn't know music could feel like a spiritual experience until this."</p>
+        <div class="t-auth"><div class="t-av">S</div><div><div class="t-nm">Sarah M.</div><div class="t-rl">First Listener</div></div></div>
+      </div>
+      <div class="tc rv">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-body">"The bilingual lyrics are genius — I listen in Korean and feel the emotion, then English and understand the message. Brilliant."</p>
+        <div class="t-auth"><div class="t-av">J</div><div><div class="t-nm">James T.</div><div class="t-rl">K-Pop Enthusiast</div></div></div>
+      </div>
+      <div class="tc rv">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-body">"The Hybrid AI concept is exactly what the future of music looks like. Aggie Lee is years ahead of everyone. This is Y3K music."</p>
+        <div class="t-auth"><div class="t-av">L</div><div><div class="t-nm">Luna R.</div><div class="t-rl">Music Producer</div></div></div>
+      </div>
+      <div class="tc rv">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-body">"Commissioned a lyric poem — it arrived in both Korean and English, hand-signed. One of the most beautiful things I own."</p>
+        <div class="t-auth"><div class="t-av">M</div><div><div class="t-nm">Mia K.</div><div class="t-rl">Commission Client</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="foot-g">
+      <div>
+        <div class="f-logo">Aggie<span class="dot">.</span>Lee</div>
+        <div class="f-logo-kr">아기 리 · Hybrid AI Artist</div>
+        <p class="f-tag">Celestial Dreamer · Two Souls, One Star<br>Heal Your Heart. Live Again.</p>
+        <div class="f-soc">
+          <a href="https://open.spotify.com" target="_blank" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+          <a href="https://music.youtube.com" target="_blank" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+          <a href="https://music.apple.com" target="_blank" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></a>
+          <a href="https://instagram.com" target="_blank" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-t">Navigate</div>
+        <a href="#about">Profile</a>
+        <a href="#music">Music</a>
+        <a href="#lyrics">Lyrics</a>
+        <a href="#gallery">Exhibition</a>
+        <a href="#mindfulness">Mindfulness</a>
+        <a href="#commissions">Commissions</a>
+      </div>
+      <div class="fc">
+        <div class="fc-t">Stream</div>
+        <a href="https://open.spotify.com" target="_blank">Spotify</a>
+        <a href="https://music.apple.com" target="_blank">Apple Music</a>
+        <a href="https://music.youtube.com" target="_blank">YouTube Music</a>
+        <a href="https://www.youtube.com/watch?v=92PcT3V244o" target="_blank">Watch on YouTube</a>
+      </div>
+      <div class="fc">
+        <div class="fc-t">Shop</div>
+        <a href="#shop">LITU Headset</a>
+        <a href="#shop">Signed Art Print</a>
+        <a href="#shop">Digital Fashion</a>
+        <a href="#shop">Golden Age Bundle</a>
+        <a href="#commissions">Commission Work</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© 2025 Aggie Lee 아기 리. All rights reserved. · Hybrid AI Artist · aggielee.co</span>
+      <div class="stripe-foot">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="#6772E5"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.92 5.555C4.258 23.086 7.316 24 10.64 24c2.619 0 4.753-.594 6.274-1.749 1.607-1.215 2.39-3.065 2.39-5.539 0-4.072-2.412-5.865-5.328-7.562z"/></svg>
+        Payments secured by Stripe
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- PURCHASE MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal-box">
+    <div class="m-head">
+      <div class="m-title">Complete Purchase</div>
+      <button class="m-cls" onclick="closeM()">✕</button>
+    </div>
+    <div class="m-prod">
+      <div class="m-icon" id="mIco">🎧</div>
+      <div><div class="m-pname" id="mNm">LITU Red Headset</div><div class="m-pprice" id="mPr">$149</div></div>
+    </div>
+    <div class="m-body">
+      <div class="fr">
+        <div class="fg"><label>First Name</label><input type="text" class="fi" placeholder="Jane"></div>
+        <div class="fg"><label>Last Name</label><input type="text" class="fi" placeholder="Doe"></div>
+      </div>
+      <div class="fg"><label>Email</label><input type="email" class="fi" placeholder="jane@email.com"></div>
+      <div class="fg"><label>Card Number</label>
+        <div class="card-vis">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#6772E5"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+          1234  5678  9012  3456
+        </div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Expiry</label><input type="text" class="fi" placeholder="MM / YY"></div>
+        <div class="fg"><label>CVC</label><input type="text" class="fi" placeholder="123"></div>
+      </div>
+      <button class="bsub" id="payBtn" onclick="doPay()" style="margin-top:6px;">
+        Pay <span id="payAmt">$149</span> — Secure Checkout
+      </button>
+      <div class="stripe-note">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#6772E5"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.92 5.555C4.258 23.086 7.316 24 10.64 24c2.619 0 4.753-.594 6.274-1.749 1.607-1.215 2.39-3.065 2.39-5.539 0-4.072-2.412-5.865-5.328-7.562z"/></svg>
+        Powered by Stripe · 256-bit SSL · Golden Age Commerce
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// NAV
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+
+// REVEAL
+const allR = document.querySelectorAll('.rv,.rvl,.rvr');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 65); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.06 });
+allR.forEach(el => obs.observe(el));
+
+// MUSIC PLAYER
+let playing = true;
+const ytf = document.getElementById('yt-frame');
+const ico = document.getElementById('playIco');
+const PAUSE = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+const PLAY  = '<path d="M8 5v14l11-7z"/>';
+function togglePlay() {
+  try { ytf.contentWindow.postMessage(JSON.stringify({event:'command',func:playing?'pauseVideo':'playVideo',args:[]}), '*'); } catch(e){}
+  playing = !playing;
+  ico.innerHTML = playing ? PAUSE : PLAY;
+}
+
+// LYRICS LANGUAGE TOGGLE
+function setLang(mode, btn) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.body.classList.remove('ko-mode','en-mode');
+  if (mode === 'ko') document.body.classList.add('ko-mode');
+  if (mode === 'en') document.body.classList.add('en-mode');
+}
+
+// SHOP MODAL
+function openM(name, price, icon) {
+  document.getElementById('mNm').textContent = name;
+  document.getElementById('mPr').textContent = price;
+  document.getElementById('payAmt').textContent = price;
+  document.getElementById('mIco').textContent = icon;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeM() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeM(); });
+function doPay() {
+  const b = document.getElementById('payBtn');
+  b.textContent = '✓ Order Confirmed — 황금시대 환영합니다!';
+  b.style.background = '#2dd4bf'; b.style.borderColor = '#2dd4bf'; b.style.color = '#0d0e18';
+  setTimeout(() => {
+    closeM();
+    b.textContent = 'Pay — Secure Checkout';
+    b.style.background = ''; b.style.borderColor = ''; b.style.color = '';
+  }, 2800);
+}
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  });
+});
+</script>
+</body>
+</html>
