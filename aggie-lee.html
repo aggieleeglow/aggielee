@@ -631,17 +631,24 @@ body.en-mode .ls-ko{display:none;}
 }
 .sc:hover .sc-ov{background:rgba(58,35,72,.35);}
 .sc-buy{
+  position:absolute;bottom:16px;left:50%;transform:translateX(-50%) translateY(8px);
   font-family:var(--fd);font-weight:700;font-size:0.68rem;
   letter-spacing:.16em;text-transform:uppercase;
   background:var(--red);color:#fff;padding:11px 20px;
-  opacity:0;transform:translateY(8px);transition:var(--tr);
-  box-shadow:0 0 20px var(--glow-red);
+  opacity:0;transition:var(--tr);
+  box-shadow:0 0 20px var(--glow-red);white-space:nowrap;z-index:2;
 }
-.sc:hover .sc-buy{opacity:1;transform:translateY(0);}
+.sc:hover .sc-buy{opacity:1;transform:translateX(-50%) translateY(0);}
 .sc-info{padding:18px 22px;}
 .sc-tag{font-family:var(--fd);font-weight:600;font-size:0.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
 .sc-name{font-family:var(--fd);font-weight:700;font-size:0.85rem;letter-spacing:.04em;margin-bottom:4px;}
-.sc-price{font-family:var(--fd);font-weight:900;font-size:0.95rem;color:var(--rose);text-shadow:0 0 12px var(--glow-r);}
+.sc-price{font-family:var(--fd);font-weight:900;font-size:1rem;color:var(--rose);text-shadow:0 0 10px var(--glow-r);margin-bottom:2px;}
+.sc-signature{font-family:var(--fd);font-weight:600;font-size:0.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);padding:4px 10px;border:1px solid var(--border-t);display:inline-block;margin-top:6px;}
+.sc-purchasable{cursor:pointer;}
+.sc-purchasable:hover{box-shadow:0 0 30px var(--glow-r);transform:translateY(-2px);}
+.sc-distro{display:block;text-decoration:none;color:inherit;}
+.sc-distro:hover{box-shadow:0 0 20px var(--glow-t);transform:translateY(-2px);}
+.m-icon-img{width:48px;height:48px;border:1px solid var(--border-r);object-fit:cover;flex-shrink:0;}
 
 /* AR badge */
 .ar-badge{
@@ -711,7 +718,10 @@ label{display:block;font-family:var(--fd);font-weight:600;font-size:0.59rem;lett
   position:absolute;inset:20px;border-radius:50%;
   background:radial-gradient(circle,rgba(45,212,191,.3),var(--navy));
   display:flex;align-items:center;justify-content:center;
-  font-size:3.5rem;
+  font-size:3.5rem;overflow:hidden;
+}
+.mind-orb-photo{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;
 }
 .mind-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
 .mind-pill{
@@ -881,7 +891,6 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
       <li><a href="#about">Profile</a></li>
       <li><a href="#music">Music</a></li>
       <li><a href="#lyrics">Lyrics</a></li>
-      <li><a href="#gallery">Exhibition</a></li>
       <li><a href="#mindfulness">Heal</a></li>
     </ul>
     <a href="#shop" class="nav-cta">Shop</a>
@@ -1171,96 +1180,6 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
 
 <div class="divider"></div>
 
-<!-- ── ART EXHIBITION / BLUEPRINT GALLERY ── -->
-<section id="gallery">
-  <div class="container">
-    <div class="gallery-intro rv">
-      <div>
-        <div class="eye">Art Exhibition</div>
-        <h2 class="sh">The Hybrid AI<br><span class="accent">Blueprint</span></h2>
-      </div>
-      <p class="sb">An immersive digital gallery treating the creation of a Hybrid AI K-pop artist as a form of high art. Explore the technical and creative architecture behind Aggie Lee.</p>
-    </div>
-    <div class="gallery-grid">
-
-      <div class="gallery-tile rv" onclick="alert('🎭 The Human Soul\n\nMotion capture session — the human anchor in mocap suit providing emotional nuance, dance choreography, and vocal base for Aggie Lee.')">
-        <div class="gt-inner">
-          <div class="gt-icon">🎭</div>
-          <div class="gt-label">The Human Soul</div>
-          <div class="gt-sub">Mocap · Vocal Base · Emotion</div>
-        </div>
-        <div class="gt-overlay">
-          <div class="gt-icon">🎭</div>
-          <div class="gt-label">The Human Soul</div>
-          <div class="gt-reveal">▶ View Installation</div>
-        </div>
-      </div>
-
-      <div class="gallery-tile rv" onclick="alert('🤖 The AI Persona\n\nRendered through Unreal Engine 5 & MetaHuman — facial enhancements, voice modulation, and hyper-realistic K-pop aesthetic applied to the human performance data.')">
-        <div class="gt-inner">
-          <div class="gt-icon">🤖</div>
-          <div class="gt-label">The AI Persona</div>
-          <div class="gt-sub">Unreal Engine 5 · MetaHuman</div>
-        </div>
-        <div class="gt-overlay">
-          <div class="gt-icon">🤖</div>
-          <div class="gt-label">The AI Persona</div>
-          <div class="gt-reveal">▶ Explore Render</div>
-        </div>
-      </div>
-
-      <div class="gallery-tile rv" onclick="alert('🎧 LITU Red Headset\n\nThe signature red headset — 3D blueprint viewing. Interactive tech specs. High-fidelity audio design that bridges the human and digital worlds.')">
-        <div class="ar-badge">AR Try-On</div>
-        <div class="gt-inner">
-          <div class="gt-icon">🎧</div>
-          <div class="gt-label">LITU Red Headset</div>
-          <div class="gt-sub">Signature Artifact · 3D Blueprint</div>
-        </div>
-        <div class="gt-overlay">
-          <div class="gt-icon">🎧</div>
-          <div class="gt-label">LITU Red Headset</div>
-          <div class="gt-reveal">▶ View in 3D</div>
-        </div>
-      </div>
-
-      <!-- Wide tile — Mocap Room -->
-      <div class="gallery-tile wide rv" onclick="alert('⚡ The Mocap Room\n\nSide-by-side installation: Human Anchor performing in mocap suit vs. AI Persona performing the same choreography. Two Souls — One Star. This is where Aggie Lee is born.')">
-        <div class="gt-wide-content">
-          <div class="gt-wide-text">
-            <h4>The Mocap Room</h4>
-            <p>Side-by-side: Human Anchor vs AI Persona<br>performing the same choreography in real-time.<br><span style="color:var(--teal);font-style:italic;">"Two Souls, One Star"</span></p>
-          </div>
-          <div class="mocap-frames">
-            <div class="mocap-frame human">👤</div>
-            <div style="display:flex;align-items:center;color:var(--rose);font-size:1.4rem;">⇌</div>
-            <div class="mocap-frame ai">✦</div>
-          </div>
-        </div>
-        <div class="gt-overlay">
-          <div class="gt-reveal" style="opacity:0;">▶ Enter the Mocap Room</div>
-        </div>
-      </div>
-
-      <div class="gallery-tile rv" onclick="alert('🌌 Iridescent Stage Outfits\n\nVirtual try-on using AR. Wearable for avatars. Exclusive apparel with AR-triggered graphics. Digital fashion as a living art medium.')">
-        <div class="ar-badge">AR Fashion</div>
-        <div class="gt-inner">
-          <div class="gt-icon">🌌</div>
-          <div class="gt-label">Iridescent Outfits</div>
-          <div class="gt-sub">Digital Fashion · AR Wearable</div>
-        </div>
-        <div class="gt-overlay">
-          <div class="gt-icon">🌌</div>
-          <div class="gt-label">Iridescent Outfits</div>
-          <div class="gt-reveal">▶ Try On</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- ── MERCH STORE ── -->
 <section id="shop">
   <div class="container">
@@ -1284,80 +1203,75 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
 
     <div class="shop-g">
 
-      <div class="sc rv" onclick="openM('LITU Red Headset','$149','🎧')">
+      <div class="sc rv sc-purchasable" onclick="openM('Nesara Gesara Cover Art','$85','Nesara_Gesara_Cover_Art.png')">
         <div class="sc-vis">
-          <div class="sc-icon">🎧</div>
-          <div class="sc-ov"><div class="sc-buy">Purchase — $149</div></div>
-          <div class="ar-badge">3D View</div>
+          <img src="Nesara_Gesara_Cover_Art.png" alt="Nesara Gesara Cover Art" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="sc-buy">Purchase — $85</div>
         </div>
         <div class="sc-info">
-          <div class="sc-tag">Signature Hardware</div>
-          <div class="sc-name">LITU Red Headset</div>
-          <div class="sc-price">$149</div>
-        </div>
-      </div>
-
-      <div class="sc rv" onclick="openM('Nesara Gesara — Signed Art Print','$85','🌸')">
-        <div class="sc-vis">
-          <div class="sc-icon">🌸</div>
-          <div class="sc-ov"><div class="sc-buy">Purchase — $85</div></div>
-        </div>
-        <div class="sc-info">
-          <div class="sc-tag">Signed Art Print</div>
+          <div class="sc-tag">Signed Art Print · Cover Art</div>
           <div class="sc-name">Nesara Gesara Cover Art</div>
           <div class="sc-price">$85</div>
+          <div class="sc-signature">✦ Signature Edition</div>
         </div>
       </div>
 
-      <div class="sc rv" onclick="openM('Iridescent Stage Jacket — Digital Fashion','$65','🌌')">
+      <div class="sc rv sc-purchasable" onclick="openM('Nesara Gesara Special Edition','$85','Nesara_Gesara_Special%20Edition_Cover_Art.png')">
         <div class="sc-vis">
-          <div class="sc-icon">🌌</div>
-          <div class="sc-ov"><div class="sc-buy">Purchase — $65</div></div>
-          <div class="ar-badge">AR Try-On</div>
+          <img src="Nesara_Gesara_Special%20Edition_Cover_Art.png" alt="Nesara Gesara Special Edition Cover Art" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="sc-buy">Purchase — $85</div>
         </div>
         <div class="sc-info">
-          <div class="sc-tag">Digital Fashion</div>
-          <div class="sc-name">Iridescent Stage Jacket</div>
-          <div class="sc-price">$65</div>
+          <div class="sc-tag">Special Edition · Signature</div>
+          <div class="sc-name">Nesara Gesara Special Edition</div>
+          <div class="sc-price">$85</div>
+          <div class="sc-signature">✦ Signature Edition</div>
         </div>
       </div>
 
-      <div class="sc rv" onclick="openM('Celestial Dreamer Hoodie','$75','⭐')">
+      <a href="https://direct.distrokid.com/aggielee/" target="_blank" rel="noopener" class="sc rv sc-distro">
         <div class="sc-vis">
-          <div class="sc-icon">⭐</div>
-          <div class="sc-ov"><div class="sc-buy">Purchase — $75</div></div>
+          <img src="Nesara%20Gesara_Unisex%20T-Shirt.webp" alt="Nesara Gesara Unisex T-Shirt" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="sc-buy">Shop on DistroKid →</div>
         </div>
         <div class="sc-info">
           <div class="sc-tag">Apparel</div>
-          <div class="sc-name">Celestial Dreamer Hoodie</div>
-          <div class="sc-price">$75</div>
+          <div class="sc-name">Unisex T-Shirt</div>
         </div>
-      </div>
+      </a>
 
-      <div class="sc rv" onclick="openM('Soul-Sync Digital Album — NFT Edition','$55','✨')">
+      <a href="https://direct.distrokid.com/aggielee/" target="_blank" rel="noopener" class="sc rv sc-distro">
         <div class="sc-vis">
-          <div class="sc-icon">✨</div>
-          <div class="sc-ov"><div class="sc-buy">Purchase — $55</div></div>
-          <div class="ar-badge">NFT</div>
+          <img src="Nesara%20Gesara_Womens%20CutT-Shirt.webp" alt="Nesara Gesara Women's Cut T-Shirt" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="sc-buy">Shop on DistroKid →</div>
         </div>
         <div class="sc-info">
-          <div class="sc-tag">Digital Collectible</div>
-          <div class="sc-name">Soul-Sync Digital Album</div>
-          <div class="sc-price">$55</div>
+          <div class="sc-tag">Apparel</div>
+          <div class="sc-name">Women's Cut T-Shirt</div>
         </div>
-      </div>
+      </a>
 
-      <div class="sc rv" onclick="openM('Golden Age Bundle — Full Collection','$390','🌙')">
+      <a href="https://direct.distrokid.com/aggielee/" target="_blank" rel="noopener" class="sc rv sc-distro">
         <div class="sc-vis">
-          <div class="sc-icon">🌙</div>
-          <div class="sc-ov"><div class="sc-buy">Purchase — $390</div></div>
+          <img src="Nesara%20Gesara_Tote%20Bag.webp" alt="Nesara Gesara Tote Bag" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="sc-buy">Shop on DistroKid →</div>
         </div>
         <div class="sc-info">
-          <div class="sc-tag">Bundle · Best Value</div>
-          <div class="sc-name">Golden Age Bundle</div>
-          <div class="sc-price">$390</div>
+          <div class="sc-tag">Accessories</div>
+          <div class="sc-name">Tote Bag</div>
         </div>
-      </div>
+      </a>
+
+      <a href="https://direct.distrokid.com/aggielee/" target="_blank" rel="noopener" class="sc rv sc-distro">
+        <div class="sc-vis">
+          <img src="Nesara%20Gesara_Ceramic%20Mug.webp" alt="Nesara Gesara Ceramic Mug" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="sc-buy">Shop on DistroKid →</div>
+        </div>
+        <div class="sc-info">
+          <div class="sc-tag">Accessories</div>
+          <div class="sc-name">Ceramic Mug</div>
+        </div>
+      </a>
 
     </div>
   </div>
@@ -1373,7 +1287,7 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
       <h2 class="sh rv" style="text-align:center;">Heal Your Heart<br><span class="accent">Live Again</span></h2>
       <div class="mind-orb-wrap rv">
         <div class="mind-orb"></div>
-        <div class="mind-orb-inner">🌸</div>
+        <div class="mind-orb-inner"><img src="aggielee.png" alt="Aggie Lee" class="mind-orb-photo"></div>
       </div>
       <div class="mind-tagline rv">"Heal Your Heart. Live Again."</div>
       <p class="mind-sub rv">Aligning with the Golden Age themes of Nesara Gesara, this space is for recovery — from debt, from lies, from suffering. The music is your guide back to yourself. Breathe. Rise. Glow like sun~ah.</p>
@@ -1479,7 +1393,6 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
         <a href="#about">Profile</a>
         <a href="#music">Music</a>
         <a href="#lyrics">Lyrics</a>
-        <a href="#gallery">Exhibition</a>
         <a href="#mindfulness">Mindfulness</a>
         <a href="#commissions">Commissions</a>
       </div>
@@ -1494,10 +1407,9 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
       <div class="fc">
         <div class="fc-t">Shop</div>
         <a href="https://direct.distrokid.com/aggielee/" target="_blank" rel="noopener">Buy Music · DistroKid</a>
-        <a href="#shop">LITU Headset</a>
-        <a href="#shop">Signed Art Print</a>
-        <a href="#shop">Digital Fashion</a>
-        <a href="#shop">Golden Age Bundle</a>
+        <a href="#shop">Nesara Gesara Cover Art</a>
+        <a href="#shop">Nesara Gesara Special Edition</a>
+        <a href="https://direct.distrokid.com/aggielee/" target="_blank" rel="noopener">Apparel &amp; Accessories</a>
         <a href="#commissions">Commission Work</a>
       </div>
     </div>
@@ -1519,8 +1431,8 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
       <button class="m-cls" onclick="closeM()">✕</button>
     </div>
     <div class="m-prod">
-      <div class="m-icon" id="mIco">🎧</div>
-      <div><div class="m-pname" id="mNm">LITU Red Headset</div><div class="m-pprice" id="mPr">$149</div></div>
+      <img class="m-icon-img" id="mIco" src="" alt="Product">
+      <div><div class="m-pname" id="mNm">Product</div><div class="m-pprice" id="mPr">$85</div></div>
     </div>
     <div class="m-body">
       <div class="fr">
@@ -1539,7 +1451,7 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
         <div class="fg"><label>CVC</label><input type="text" class="fi" placeholder="123"></div>
       </div>
       <button class="bsub" id="payBtn" onclick="doPay()" style="margin-top:6px;">
-        Pay <span id="payAmt">$149</span> — Secure Checkout
+        Pay <span id="payAmt">$85</span> — Secure Checkout
       </button>
       <div class="stripe-note">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="#6772E5"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.92 5.555C4.258 23.086 7.316 24 10.64 24c2.619 0 4.753-.594 6.274-1.749 1.607-1.215 2.39-3.065 2.39-5.539 0-4.072-2.412-5.865-5.328-7.562z"/></svg>
@@ -1585,11 +1497,12 @@ function setLang(mode, btn) {
 }
 
 // SHOP MODAL
-function openM(name, price, icon) {
+function openM(name, price, imgSrc) {
   document.getElementById('mNm').textContent = name;
   document.getElementById('mPr').textContent = price;
   document.getElementById('payAmt').textContent = price;
-  document.getElementById('mIco').textContent = icon;
+  document.getElementById('mIco').src = imgSrc;
+  document.getElementById('mIco').alt = name;
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
