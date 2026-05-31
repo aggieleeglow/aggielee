@@ -960,23 +960,26 @@ footer{background:#f6e9ef;padding:68px 0 90px;border-top:1px solid var(--border-
 </head>
 <body>
 
-<!-- YouTube hidden autoplay -->
+<!-- YouTube hidden autoplay (muted so the Quantum World intro track is the only sound) -->
 <iframe id="yt-frame"
-  src="https://www.youtube.com/embed/-vuUOiOu3q4?autoplay=1&loop=1&playlist=-vuUOiOu3q4&enablejsapi=1&rel=0"
+  src="https://www.youtube.com/embed/-vuUOiOu3q4?autoplay=1&loop=1&playlist=-vuUOiOu3q4&enablejsapi=1&rel=0&mute=1"
   allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
+
+<!-- Soft signature track — starts on the visitor's first click -->
+<audio id="bgAudio" src="aggies-quantum-world-intro.mp3" loop preload="auto"></audio>
 
 <!-- ── MUSIC BAR ── -->
 <div id="music-bar">
   <img class="mb-thumb" src="Nesara_Gesara_Cover_Art.png" alt="album"
     onerror="this.style.cssText='width:40px;height:40px;border-radius:3px;background:linear-gradient(135deg,#e08bb4,#e8b96a);flex-shrink:0;border:1px solid rgba(224,139,180,.4)'">
   <div class="mb-info">
-    <div class="mb-title">네사라 게사라 — Nesara Gesara</div>
+    <div class="mb-title">Aggie's Quantum World — Intro</div>
     <div class="mb-artist">Aggie Lee 애기 리</div>
   </div>
   <div class="mb-now"><span class="mb-dot"></span> Now Playing</div>
   <button class="mb-play" id="playBtn" onclick="togglePlay()">
-    <svg id="playIco" width="13" height="13" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    <svg id="playIco" width="13" height="13" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
   </button>
   <div class="mb-links">
     <a href="https://youtu.be/-vuUOiOu3q4" target="_blank" class="mb-link">
@@ -1816,14 +1819,33 @@ const obs = new IntersectionObserver((entries) => {
 }, { threshold: 0.06 });
 allR.forEach(el => obs.observe(el));
 
-// MUSIC PLAYER
-let playing = true;
-const ytf = document.getElementById('yt-frame');
+// MUSIC PLAYER — soft "Aggie's Quantum World" intro track
 const ico = document.getElementById('playIco');
+const bgAudio = document.getElementById('bgAudio');
+bgAudio.volume = 0.18;          // subtle, background-level volume
+let playing = false;            // nothing audible until the visitor interacts
+let started = false;            // has the track been kicked off by a click yet
 const PAUSE = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
 const PLAY  = '<path d="M8 5v14l11-7z"/>';
+
+function startMusic() {
+  if (started) return;
+  started = true;
+  bgAudio.play().then(() => {
+    playing = true;
+    ico.innerHTML = PAUSE;
+  }).catch(() => { started = false; });  // allow a retry on the next gesture
+}
+
+// First click anywhere on the site gently brings the music in.
+document.addEventListener('click', function onFirstClick() {
+  startMusic();
+  if (started) document.removeEventListener('click', onFirstClick);
+}, { passive: true });
+
 function togglePlay() {
-  try { ytf.contentWindow.postMessage(JSON.stringify({event:'command',func:playing?'pauseVideo':'playVideo',args:[]}), '*'); } catch(e){}
+  if (!started) { startMusic(); return; }
+  if (playing) { bgAudio.pause(); } else { bgAudio.play().catch(()=>{}); }
   playing = !playing;
   ico.innerHTML = playing ? PAUSE : PLAY;
 }
