@@ -7,3 +7,9 @@
   from = "/"
   to = "/aggie-lee.html"
   status = 200
+
+# Clean URL for the support thank-you page.
+[[redirects]]
+  from = "/thank-you"
+  to = "/thank-you.html"
+  status = 200
